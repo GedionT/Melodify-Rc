@@ -1,6 +1,7 @@
+/* eslint-disable */
 var Synth, AudioSynth, AudioSynthInstrument;
-!(function() {
-  console.log("here");
+(function () {
+  console.log("in audiosynth");
   var URL = window.URL || window.webkitURL;
   var Blob = window.Blob;
 
@@ -10,20 +11,20 @@ var Synth, AudioSynth, AudioSynthInstrument;
 
   var _encapsulated = false;
   var AudioSynthInstance = null;
-  var pack = function(c, arg) {
+  var pack = function (c, arg) {
     return [
       new Uint8Array([arg, arg >> 8]),
-      new Uint8Array([arg, arg >> 8, arg >> 16, arg >> 24])
+      new Uint8Array([arg, arg >> 8, arg >> 16, arg >> 24]),
     ][c];
   };
-  var setPrivateVar = function(n, v, w, e) {
+  var setPrivateVar = function (n, v, w, e) {
     Object.defineProperty(this, n, {
       value: v,
       writable: !!w,
-      enumerable: !!e
+      enumerable: !!e,
     });
   };
-  var setPublicVar = function(n, v, w) {
+  var setPublicVar = function (n, v, w) {
     setPrivateVar.call(this, n, v, w, true);
   };
   AudioSynthInstrument = function AudioSynthInstrument() {
@@ -31,7 +32,7 @@ var Synth, AudioSynth, AudioSynthInstrument;
   };
   var setPriv = setPrivateVar.bind(AudioSynthInstrument.prototype);
   var setPub = setPublicVar.bind(AudioSynthInstrument.prototype);
-  setPriv("__init__", function(a, b, c) {
+  setPriv("__init__", function (a, b, c) {
     if (!_encapsulated) {
       throw new Error(
         "AudioSynthInstrument can only be instantiated from the createInstrument method of the AudioSynth object."
@@ -41,10 +42,10 @@ var Synth, AudioSynth, AudioSynthInstrument;
     setPublicVar.call(this, "name", b);
     setPrivateVar.call(this, "_soundID", c);
   });
-  setPub("play", function(note, octave, duration) {
+  setPub("play", function (note, octave, duration) {
     return this._parent.play(this._soundID, note, octave, duration);
   });
-  setPub("generate", function(note, octave, duration) {
+  setPub("generate", function (note, octave, duration) {
     return this._parent.generate(this._soundID, note, octave, duration);
   });
   AudioSynth = function AudioSynth() {
@@ -61,16 +62,16 @@ var Synth, AudioSynth, AudioSynthInstrument;
   setPriv("_bitsPerSample", 16);
   setPriv("_channels", 1);
   setPriv("_sampleRate", 44100, true);
-  setPub("setSampleRate", function(v) {
+  setPub("setSampleRate", function (v) {
     this._sampleRate = Math.max(Math.min(v | 0, 44100), 4000);
     this._clearCache();
     return this._sampleRate;
   });
-  setPub("getSampleRate", function() {
+  setPub("getSampleRate", function () {
     return this._sampleRate;
   });
   setPriv("_volume", 32768, true);
-  setPub("setVolume", function(v) {
+  setPub("setVolume", function (v) {
     v = parseFloat(v);
     if (isNaN(v)) {
       v = 0;
@@ -80,7 +81,7 @@ var Synth, AudioSynth, AudioSynthInstrument;
     this._clearCache();
     return this._volume;
   });
-  setPub("getVolume", function() {
+  setPub("getVolume", function () {
     return Math.round((this._volume / 32768) * 10000) / 10000;
   });
   setPriv("_notes", {
@@ -95,17 +96,17 @@ var Synth, AudioSynth, AudioSynthInstrument;
     "G#": 415.3,
     A: 440.0,
     "A#": 466.16,
-    B: 493.88
+    B: 493.88,
   });
   setPriv("_fileCache", [], true);
   setPriv("_temp", {}, true);
   setPriv("_sounds", [], true);
   setPriv("_mod", [
-    function(i, s, f, x) {
+    function (i, s, f, x) {
       return Math.sin(2 * Math.PI * (i / s) * f + x);
-    }
+    },
   ]);
-  setPriv("_resizeCache", function() {
+  setPriv("_resizeCache", function () {
     var f = this._fileCache;
     var l = this._sounds.length;
     while (f.length < l) {
@@ -120,11 +121,11 @@ var Synth, AudioSynth, AudioSynthInstrument;
       f.push(octaveList);
     }
   });
-  setPriv("_clearCache", function() {
+  setPriv("_clearCache", function () {
     this._fileCache = [];
     this._resizeCache();
   });
-  setPub("generate", function(sound, note, octave, duration) {
+  setPub("generate", function (sound, note, octave, duration) {
     var thisSound = this._sounds[sound];
     if (!thisSound) {
       for (var i = 0; i < this._sounds.length; i++) {
@@ -212,7 +213,7 @@ var Synth, AudioSynth, AudioSynthInstrument;
         // chunk 2
         "data", // Sub-chunk identifier
         pack(1, (data.length * channels * bitsPerSample) / 8), // Chunk length
-        data
+        data,
       ];
       var blob = new Blob(out, { type: "audio/wav" });
       var dataURI = URL.createObjectURL(blob);
@@ -223,16 +224,16 @@ var Synth, AudioSynth, AudioSynthInstrument;
       return dataURI;
     }
   });
-  setPub("play", function(sound, note, octave, duration) {
+  setPub("play", function (sound, note, octave, duration) {
     var src = this.generate(sound, note, octave, duration);
     var audio = new Audio(src);
     audio.play();
     return true;
   });
-  setPub("debug", function() {
+  setPub("debug", function () {
     this._debug = true;
   });
-  setPub("createInstrument", function(sound) {
+  setPub("createInstrument", function (sound) {
     var n = 0;
     var found = false;
     if (typeof sound === "string") {
@@ -258,17 +259,17 @@ var Synth, AudioSynth, AudioSynthInstrument;
     _encapsulated = false;
     return ins;
   });
-  setPub("listSounds", function() {
+  setPub("listSounds", function () {
     var r = [];
     for (var i = 0; i < this._sounds.length; i++) {
       r.push(this._sounds[i].name);
     }
     return r;
   });
-  setPriv("__init__", function() {
+  setPriv("__init__", function () {
     this._resizeCache();
   });
-  setPub("loadSoundProfile", function() {
+  setPub("loadSoundProfile", function () {
     for (var i = 0, len = arguments.length; i < len; i++) {
       var o = arguments[i];
       if (!(o instanceof Object)) {
@@ -279,7 +280,7 @@ var Synth, AudioSynth, AudioSynthInstrument;
     this._resizeCache();
     return true;
   });
-  setPub("loadModulationFunction", function() {
+  setPub("loadModulationFunction", function () {
     for (var i = 0, len = arguments.length; i < len; i++) {
       var f = arguments[i];
       if (typeof f !== "function") {
@@ -294,34 +295,34 @@ var Synth, AudioSynth, AudioSynthInstrument;
 })();
 
 Synth.loadModulationFunction(
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 1 * Math.sin(2 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 1 * Math.sin(4 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 1 * Math.sin(8 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 1 * Math.sin(0.5 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 1 * Math.sin(0.25 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 0.5 * Math.sin(2 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 0.5 * Math.sin(4 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 0.5 * Math.sin(8 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 0.5 * Math.sin(0.5 * Math.PI * ((i / sampleRate) * frequency) + x);
   },
-  function(i, sampleRate, frequency, x) {
+  function (i, sampleRate, frequency, x) {
     return 0.5 * Math.sin(0.25 * Math.PI * ((i / sampleRate) * frequency) + x);
   }
 );
@@ -329,13 +330,13 @@ Synth.loadModulationFunction(
 Synth.loadSoundProfile(
   {
     name: "piano",
-    attack: function() {
+    attack: function () {
       return 0.002;
     },
-    dampen: function(sampleRate, frequency, volume) {
+    dampen: function (sampleRate, frequency, volume) {
       return Math.pow(0.5 * Math.log((frequency * volume) / sampleRate), 2);
     },
-    wave: function(i, sampleRate, frequency, volume) {
+    wave: function (i, sampleRate, frequency, volume) {
       var base = this.modulate[0];
       return this.modulate[1](
         i,
@@ -345,17 +346,17 @@ Synth.loadSoundProfile(
           0.75 * base(i, sampleRate, frequency, 0.25) +
           0.1 * base(i, sampleRate, frequency, 0.5)
       );
-    }
+    },
   },
   {
     name: "organ",
-    attack: function() {
+    attack: function () {
       return 0.3;
     },
-    dampen: function(sampleRate, frequency) {
+    dampen: function (sampleRate, frequency) {
       return 1 + frequency * 0.01;
     },
-    wave: function(i, sampleRate, frequency) {
+    wave: function (i, sampleRate, frequency) {
       var base = this.modulate[0];
       return this.modulate[1](
         i,
@@ -365,17 +366,17 @@ Synth.loadSoundProfile(
           0.5 * base(i, sampleRate, frequency, 0.25) +
           0.25 * base(i, sampleRate, frequency, 0.5)
       );
-    }
+    },
   },
   {
     name: "acoustic",
-    attack: function() {
+    attack: function () {
       return 0.002;
     },
-    dampen: function() {
+    dampen: function () {
       return 1;
     },
-    wave: function(i, sampleRate, frequency) {
+    wave: function (i, sampleRate, frequency) {
       var vars = this.vars;
       vars.valueTable = !vars.valueTable ? [] : vars.valueTable;
       if (typeof vars.playVal === "undefined") {
@@ -427,17 +428,17 @@ Synth.loadSoundProfile(
 
         return _return;
       }
-    }
+    },
   },
   {
     name: "edm",
-    attack: function() {
+    attack: function () {
       return 0.002;
     },
-    dampen: function() {
+    dampen: function () {
       return 1;
     },
-    wave: function(i, sampleRate, frequency) {
+    wave: function (i, sampleRate, frequency) {
       var base = this.modulate[0];
       var mod = this.modulate.slice(1);
       return mod[0](
@@ -459,7 +460,7 @@ Synth.loadSoundProfile(
         ) +
           mod[8](i, sampleRate, frequency, base(i, sampleRate, frequency, 1.75))
       );
-    }
+    },
   }
 );
 

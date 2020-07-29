@@ -1,3 +1,4 @@
+/* eslint-disable */
 var audioSynth = require("./audiosynth");
 var AudioSynth = audioSynth.AudioSynth;
 
@@ -29,13 +30,13 @@ var keyboard = {
   e: "A#,0",
   u: "B,0",
   w: "C,1",
-  x: "C#,1"
+  x: "C#,1",
 };
 
 function toKeyboardArray(array) {
-  let arrayLowerCase = array.map(a => [a[0].toLowerCase(), a[1]]);
+  let arrayLowerCase = array.map((a) => [a[0].toLowerCase(), a[1]]);
   let i = 0;
-  let keyboardArray = arrayLowerCase.map(function(a) {
+  let keyboardArray = arrayLowerCase.map(function (a) {
     if (keyboard[a[0][0]] !== undefined) return [keyboard[a[0][0]], a[1], i++];
     else return [keyboard["a"], a[1], i++];
   });
@@ -44,7 +45,7 @@ function toKeyboardArray(array) {
 
 async function playKeyboard(keyboardArray, pause, index, selectSound) {
   var __audioSynth = new AudioSynth();
-  __audioSynth.setVolume(0.01);
+  __audioSynth.setVolume(0.09);
   var __octave = 4; //sets position of middle C, normally the 4th octave
 
   //to select the instrument to play
@@ -57,13 +58,13 @@ async function playKeyboard(keyboardArray, pause, index, selectSound) {
   // };
 
   // Generates audio for pressed note and returns that to be played
-  var fnPlayNote = function(note, octave, duration) {
+  var fnPlayNote = function (note, octave, duration) {
     var src = __audioSynth.generate(selectSound.value, note, octave, duration);
     var container = new Audio(src);
-    container.addEventListener("ended", function() {
+    container.addEventListener("ended", function () {
       container = null;
     });
-    container.addEventListener("loadeddata", function(e) {
+    container.addEventListener("loadeddata", function (e) {
       e.target.play();
     });
     container.autoplay = false;
@@ -73,7 +74,7 @@ async function playKeyboard(keyboardArray, pause, index, selectSound) {
   };
 
   function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
   let listContainers = [];
 
@@ -87,8 +88,8 @@ async function playKeyboard(keyboardArray, pause, index, selectSound) {
     listContainers.push(container);
 
     if (pause.value) {
-      listContainers.map(container => {
-        container.addEventListener("loadeddata", function(e) {
+      listContainers.map((container) => {
+        container.addEventListener("loadeddata", function (e) {
           e.target.pause();
         });
       });
@@ -98,8 +99,8 @@ async function playKeyboard(keyboardArray, pause, index, selectSound) {
     await timeout(ka[1] * 200);
 
     if (pause.value) {
-      listContainers.map(container => {
-        container.addEventListener("loadeddata", function(e) {
+      listContainers.map((container) => {
+        container.addEventListener("loadeddata", function (e) {
           e.target.pause();
         });
       });

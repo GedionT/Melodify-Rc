@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import getData from "../searchService";
 
-function SearchPane({ dataPuller }) {
+function SearchPane({ dataPusher }) {
   // state for url query input
   const [query, setQuery] = useState({
-    url: ""
+    url: "",
   });
 
   // handles onChange in input bar using setQuery
@@ -13,17 +13,10 @@ function SearchPane({ dataPuller }) {
     setQuery(newQuery);
   }
 
-  // state for pulled data from searchPane
-  const [data, setData] = useState([]);
-
-  // send the data through the prop callback to parent
-
   // on submit button, make sure it's found and used
   async function submitHandle(query) {
-    if (query !== null) {
-      await setData(getData(query));
-      dataPuller(data);
-    }
+    const data = await getData(query);
+    dataPusher(data);
   }
 
   return (
@@ -47,7 +40,7 @@ function SearchPane({ dataPuller }) {
         </center>
       </h6>
 
-      <div id="search" className="w-55 input-group mb-2 ">
+      <div id="search" className="w-50 input-group mb-2 ">
         <input
           className="shadow-sm form-control form-rounded"
           id="search"

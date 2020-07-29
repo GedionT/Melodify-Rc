@@ -6,27 +6,25 @@ import { Spin } from "antd";
 import { Spinner } from "@simply007org/react-spinners";
 
 function Home() {
-  const [data, setData] = useState({ scraped: [] });
+  const [raw, setRaw] = useState([]);
 
-  const dataPuller = raw => {
-    // we will use the dataFromChild here
-    if (raw) {
-      const fetchedData = { ...data, scraped: raw };
-      setData(fetchedData);
+  function dataPuller(data) {
+    if (data) {
+      setRaw(data);
     }
-  };
+  }
 
   return (
     <div>
       <div className="d-flex flex-column align-items-center">
         <center>
-          <SearchPane dataPuller={dataPuller} />
+          <SearchPane dataPusher={dataPuller} />
           <Spinner name="mySpinner">
             <Spin size="large" />
           </Spinner>
         </center>
       </div>
-      <Boards data={data.scraped || ""} />
+      <Boards data={raw || ""} />
     </div>
   );
 }
