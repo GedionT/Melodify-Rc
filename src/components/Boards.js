@@ -5,21 +5,20 @@ import { Card, Col, Row } from "antd";
 
 function Board({ data }) {
   // use kb-helper to perform key-binding on props.data.scraped
-  const [stat, setStat] = useState({
-    pause: { value: false },
-    text: [],
-    notesArray: [],
-    index: 0,
-    renderFlag: false,
-    playing: true,
-    selectSound: { value: 1 },
-  });
+  // const [stat, setStat] = useState({
+  //   pause: { value: false },
+  //   notesArray: [],
+  //   index: 0,
+  //   renderFlag: false,
+  //   playing: true,
+  //   selectSound: { value: 1 },
+  // });
+  const [text, setText] = useState("");
 
-  // useEffect(() => {
-  //   let content = [];
-  //   let newStat = { ...stat, text: content };
-  //   setStat(newStat);
-  // }, [data, stat]);
+  useEffect(() => {
+    let txt = data.map((tuple) => tuple[0]).join(" ");
+    setText(txt);
+  }, [data]);
 
   // use helper to generate the audio // neon-highlight on play on note card
 
@@ -28,7 +27,7 @@ function Board({ data }) {
       <Row gutter={16}>
         <Col span={12}>
           <Card title="Raw Content" bordered={true}>
-            <p id="raw">{data}</p>
+            <p id="raw">{text}</p>
           </Card>
         </Col>
         <Col span={12}>
