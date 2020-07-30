@@ -16,8 +16,10 @@ function Board({ data }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    let txt = data.map((tuple) => tuple[0]).join(" ");
-    setText(txt);
+    if (typeof data === array) {
+      let txt = data.map((tuple) => tuple[0]).join(" ");
+      setText(txt);
+    }
   }, [data]);
 
   // use helper to generate the audio // neon-highlight on play on note card
