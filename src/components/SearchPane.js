@@ -4,7 +4,7 @@ import getData from "../searchService";
 function SearchPane({ dataPusher }) {
   // state for url query input
   const [query, setQuery] = useState({
-    url: "",
+    url: ""
   });
 
   // handles onChange in input bar using setQuery
@@ -20,8 +20,7 @@ function SearchPane({ dataPusher }) {
   }
 
   return (
-    <div>
-      <br />
+    <div id="content-main">
       <br />
       <h1 id="home-title">
         <center>Melodify</center>
@@ -29,18 +28,16 @@ function SearchPane({ dataPusher }) {
       <h5>
         <center>" Hear Your Sites "</center>
       </h5>
-      <br />
-
       <h6>
         <center>
-          {" "}
+          {"  "}
           Ever wondered what a website content might sound like? Melodify
           scrapes the contents of a website and composes a song based on <br />{" "}
           an entered website URL. Keep an open mind for some website music.{" "}
         </center>
       </h6>
 
-      <div id="search" className="w-50 input-group mb-2 ">
+      <div id="search" className="w-50 input-group">
         <input
           className="shadow-sm form-control form-rounded"
           id="search"
@@ -63,21 +60,6 @@ function SearchPane({ dataPusher }) {
             Search
           </button>
         </div>
-      </div>
-      <div className="selection-container">
-        <center>
-          <select
-            className="shadow custome-select"
-            name="instrument-select"
-            id="btn-menu"
-          >
-            <option defaultValue>Instrument Flavor</option>
-            <option value="0">Piano</option>
-            <option value="1">Organ</option>
-            <option value="2">Acoustic</option>
-            <option value="3">Edm</option>
-          </select>
-        </center>
       </div>
     </div>
   );

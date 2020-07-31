@@ -4,7 +4,7 @@ function About() {
   return (
     <div>
       <br />
-       <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center">
         <div className="w-100 d-flex flex-column justify-content-center align-items-center">
           <div className="d-flex justify-content-center align-items-center">
             <h1 className="d-flex align-items-center"> </h1>
@@ -15,7 +15,7 @@ function About() {
           <h4>
             <b>Idea</b>
           </h4>
-          <h5>
+          <h6>
             Melodify is a music generator site that lets you enter a valid
             website url and it scrapes words from the contents of the website.
             It then translates the words into musical notes using magic math
@@ -26,7 +26,7 @@ function About() {
             chaotic. You have the option to choose from different instruments:
             from piano to edm. Try it out, and hear what your favorite website
             tells you.
-          </h5>
+          </h6>
         </div>
 
         <br />
@@ -35,14 +35,14 @@ function About() {
           <h4>
             <b>How It Works</b>
           </h4>
-          <h5>
+          <h6>
             We first scrape a website of a portion of its words. Depending on
             the word a mucical note will be assigned to it - The first letter
             will dictate the note, meanwhile the length will dictate duration.
             Using Keith William Horwood's dynamically generated synthetic
             keyboard we were able to map the words into a song on the client
             browser.
-          </h5>
+          </h6>
         </div>
 
         <br />
@@ -51,10 +51,10 @@ function About() {
           <h4>
             <b>Technologies</b>
           </h4>
-          <h5>
+          <h6>
             Angular.js (Now React.js), Bootstrap, CSS, HTML, JavaScript,
             Node.js, Puppeteer, and Typescript.
-          </h5>
+          </h6>
         </div>
 
         <br />

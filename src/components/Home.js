@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Boards from "./Boards";
 import SearchPane from "./SearchPane";
 import "antd/dist/antd.css";
-import { Spin } from "antd";
 import { Spinner } from "@simply007org/react-spinners";
+import { SyncLoader as Spin } from "react-spinners";
 
 function Home() {
   const [raw, setRaw] = useState([]);
@@ -20,11 +20,13 @@ function Home() {
         <center>
           <SearchPane dataPusher={dataPuller} />
           <Spinner name="mySpinner">
-            <Spin size="large" />
+            <Spin color="#410d78" />
           </Spinner>
         </center>
       </div>
-      <Boards data={raw || ""} />
+      <div className="board-container">
+        <Boards data={raw || ""} />
+      </div>
     </div>
   );
 }
