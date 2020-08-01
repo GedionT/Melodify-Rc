@@ -66,6 +66,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/yusra.jpg"
                 alt="yusra"
+                width="50px"
+                height="60px"
               />
               <h5>Yusra Irfan</h5>
               <p>Missisauga, ON, Canada</p>
@@ -91,6 +93,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/judy.jpg"
                 alt="judy"
+                width="50px"
+                height="60px"
               />
               <h5>Judy Ham</h5>
               <p>Richmond Hill, ON, Canada</p>
@@ -116,6 +120,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/phil.jpg"
                 alt="phil"
+                width="50px"
+                height="60px"
               />
               <h5>Phillip Truong</h5>
               <p>Niagara Falls, ON, Canada</p>
@@ -141,6 +147,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/ged.jpg"
                 alt="ged"
+                width="50px"
+                height="60px"
               />
               <h5>Gedion Teshome</h5>
               <p>Addis Ababa, ADD, Ethiopia</p>

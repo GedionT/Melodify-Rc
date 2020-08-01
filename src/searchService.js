@@ -1,8 +1,8 @@
 import { spinnerService } from "@simply007org/react-spinners";
 import * as Axios from "axios";
 
-// const root = "https://txtscraper.herokuapp.com";
-const root = "delete-me";
+const root = "https://txtscraper.herokuapp.com";
+// const root = "delete-me";
 
 function getData(url) {
   spinnerService.show("mySpinner");
