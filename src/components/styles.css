@@ -1,14 +1,14 @@
 body {
   position: absolute;
-  padding: 10px 0px 10px 0px;
+  padding: 0px 0px 5px 0px;
   background-color: #fff7ff;
-  font-family: "Slabo 32px", serif;
+  font-family: "Slabo 12px", serif;
   align-content: center;
 }
 
 #neon {
-  position: absoulute;
-  font-family: "Slabo 27px", serif;
+  position: relative;
+  font-family: "Slabo 12px", serif;
   text-shadow: 0px 0px 9px #0097e8, 0px 0px 15px #f50abe, 0px 0px 5px #f50abe;
   animation: glow 4s infinite;
 }
@@ -31,20 +31,24 @@ div#content-main {
 }
 
 div#nav-contianer {
-  background-color: white;
+  background-color: #fff7ff;
 }
 
-h1#logo {
-  color: #410d78;
-}
-
-h1#home-title {
+h1#logo,
+h3#home-title {
   color: #410d78;
 }
 
 h5,
 h6 {
-  font-family: "Slabo 32px", serif;
+  font-family: "Slabo 16px", serif;
+}
+
+#btn-play {
+  background-color: #28054d;
+  border-radius: 3rem;
+  align-items: center;
+  color: white;
 }
 
 #purp {
@@ -73,17 +77,18 @@ h6 {
 }
 
 .board-container {
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .jumbotron {
   border-radius: 1rem;
-  padding: 20px 15px 20px 15px;
+  padding: 14px 12px 5px 12px;
 }
 
 .form-rounded {
   border-radius: 5rem;
+  align-content: center;
 }
 
 .nav-link {
@@ -101,7 +106,7 @@ h6 {
 
 #search {
   position: relative;
-  padding: 15px 15px 15px 15px;
+  padding: 12px 12px;
 }
 
 #search-btn {

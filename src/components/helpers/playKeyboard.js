@@ -45,7 +45,7 @@ function toKeyboardArray(array) {
 
 async function playKeyboard(keyboardArray, pause, index, selectSound) {
   var __audioSynth = new AudioSynth();
-  __audioSynth.setVolume(0.09);
+  __audioSynth.setVolume(0.08);
   var __octave = 4; //sets position of middle C, normally the 4th octave
 
   //to select the instrument to play

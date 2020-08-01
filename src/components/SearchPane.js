@@ -22,12 +22,16 @@ function SearchPane({ dataPusher }) {
   return (
     <div id="content-main">
       <br />
-      <h1 id="home-title">
+      <br />
+      <br />
+      <h3 id="home-title">
         <center>Melodify</center>
-      </h1>
+      </h3>
       <h5>
         <center>" Hear Your Sites "</center>
       </h5>
+
+      <br />
       <h6>
         <center>
           {"  "}
@@ -36,31 +40,32 @@ function SearchPane({ dataPusher }) {
           an entered website URL. Keep an open mind for some website music.{" "}
         </center>
       </h6>
+      <center>
+        <div id="search" className="input-group">
+          <input
+            className="shadow-sm form-control form-rounded"
+            id="search"
+            name="search"
+            placeholder=" Enter URL to fetch content"
+            onChange={onQueryChange}
+            type="text"
+            value={query.url}
+          />
 
-      <div id="search" className="w-50 input-group">
-        <input
-          className="shadow-sm form-control form-rounded"
-          id="search"
-          name="search"
-          placeholder="Enter a URL to scrape content"
-          onChange={onQueryChange}
-          type="text"
-          value={query.url}
-        />
-
-        <div className="shadow-sm input-group-append">
-          <button
-            id="search-btn"
-            className="btn btn-outline-dark"
-            type="button"
-            onClick={() => {
-              submitHandle(query);
-            }}
-          >
-            Search
-          </button>
+          <div className="shadow-sm input-group-append">
+            <button
+              id="search-btn"
+              className="btn btn-outline-dark"
+              type="button"
+              onClick={() => {
+                submitHandle(query);
+              }}
+            >
+              Search
+            </button>
+          </div>
         </div>
-      </div>
+      </center>
     </div>
   );
 }

@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import { Card, Col, Row } from "antd";
-// import { playKeyboard, toKeyboardArray } from "./helpers/playKeyboard";
+import { playKeyboard, toKeyboardArray } from "./helpers/playKeyboard";
 
 function Board({ data }) {
-  // use kb-helper to perform key-binding on props.data.scraped
-  // const [stat, setStat] = useState({
-  //   pause: { value: false },
-  //   notesArray: [],
-  //   index: 0,
-  //   renderFlag: false,
-  //   playing: true,
-  //   selectSound: { value: 1 },
-  // });
+  // todo: highlight,state for stat
+
   const [text, setText] = useState("");
-  // const [notes, setNotes] = useState("");
+  const [keyboard, setKeyboard] = useState([]);
+  const [stat, setStat] = useState({
+    pause: { value: false },
+    index: 0,
+    selectSound: { value: 1 },
+    renderFlag: false
+  });
 
   useEffect(() => {
     if (typeof data !== "string") {
       let txt = data.map(tuple => tuple[0]).join(" ");
       setText(txt);
+      setKeyboard(toKeyboardArray(data));
     }
   }, [data]);
 
-  // use helper to generate the audio // neon-highlight on play on note card
+  useEffect(() => {
+    if (keyboard.length > 0)
+      playKeyboard(keyboard, stat.pause, stat.index, stat.selectSound);
+  }, [keyboard, stat]);
 
   return (
     <>
@@ -40,19 +43,36 @@ function Board({ data }) {
             <option value="2">Acoustic</option>
             <option value="3">Edm</option>
           </select>
+          {"             |            "}
+          <button
+            id="btn-play"
+            onClick={() => {
+              if (stat.pause.value === false) {
+                let newStat = { ...stat, pause: { value: true } };
+                return setStat(newStat);
+              } else if (stat.pause.value === true) {
+                let newStat = { ...stat, pause: { value: false } };
+                return setStat(newStat);
+              } else return;
+            }}
+          >
+            <span role="img" aria-label="mute">
+              🔈
+            </span>
+          </button>
         </center>
       </div>
       <div id="cards" className="jumbotron">
-        <Row gutter={16}>
+        <Row gutter={5}>
           <Col span={12}>
             <Card title="Raw Content" bordered={true}>
-              <p id="raw">{text}</p>
+              <p id="raw">{text || "waiting..."}</p>
             </Card>
           </Col>
           <Col span={12}>
             <Card title="Music Notes" bordered={true}>
-              <p id="neon" name="notes">
-                dev mode
+              <p id="neon">
+                {keyboard.map(tuples => tuples[0]).join(" | ") || "waiting..."}
               </p>
             </Card>
           </Col>

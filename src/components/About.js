@@ -64,82 +64,108 @@ function About() {
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/yusra4.jpg"
+                src="/assets/yusra.jpg"
                 alt="yusra"
               />
-              <h4>Yusra Irfan</h4>
+              <h5>Yusra Irfan</h5>
               <p>Missisauga, ON, Canada</p>
               <p>Western University</p>
               <div className="d-flex w-50 justify-content-around">
                 <a href="https://github.com/irfanyusra">
                   {" "}
-                  <i className="fa fa-github" />
+                  <i
+                    className="fa fa-github"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/irfanyusra/">
-                  <i className="fa fa-linkedin-square" />
+                  <i
+                    className="fa fa-linkedin-square"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
               </div>
             </div>
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/judy3.jpg"
+                src="/assets/judy.jpg"
                 alt="judy"
               />
-              <h4>Judy Ham</h4>
+              <h5>Judy Ham</h5>
               <p>Richmond Hill, ON, Canada</p>
               <p>York University</p>
               <div className="d-flex w-50 justify-content-around">
                 <a href="https://github.com/judyyhha">
                   {" "}
-                  <i className="fa fa-github" />
+                  <i
+                    className="fa fa-github"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/yeonghyeon-ham/">
-                  <i className="fa fa-linkedin-square" />
+                  <i
+                    className="fa fa-linkedin-square"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
               </div>
             </div>
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/phil5.jpg"
+                src="/assets/phil.jpg"
                 alt="phil"
               />
-              <h4>Phillip Truong</h4>
+              <h5>Phillip Truong</h5>
               <p>Niagara Falls, ON, Canada</p>
               <p>Western University</p>
               <div className="d-flex w-50 justify-content-around">
                 <a href="https://github.com/PhillipTruong">
                   {" "}
-                  <i className="fa fa-github" />
+                  <i
+                    className="fa fa-github"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/truonghphillip/">
-                  <i className="fa fa-linkedin-square" />
+                  <i
+                    className="fa fa-linkedin-square"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
               </div>
             </div>
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/ged4.jpg"
+                src="/assets/ged.jpg"
                 alt="ged"
               />
-              <h4>Gedion Teshome</h4>
+              <h5>Gedion Teshome</h5>
               <p>Addis Ababa, ADD, Ethiopia</p>
-              <p>Addis Ababa SciTech University</p>
+              <p>Addis Ababa Science and Tech University</p>
               <div className="d-flex w-50 justify-content-around">
                 <a href="https://github.com/GedionT">
                   {" "}
-                  <i className="fa fa-github" />
+                  <i
+                    className="fa fa-github"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/gedion-teshome-142431146/">
-                  <i className="fa fa-linkedin-square" />
+                  <i
+                    className="fa fa-linkedin-square"
+                    style={{ fontSize: "36px", color: "#28054d" }}
+                  />
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <br />
+      <br />
     </div>
   );
 }
