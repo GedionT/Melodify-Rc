@@ -64,23 +64,23 @@ function About() {
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/yusra.jpg"
-                alt="yusra"
-                width="50px"
-                height="60px"
+                src="/assets/ged.jpg"
+                alt="ged"
+                width="98px"
+                height="110px"
               />
-              <h5>Yusra Irfan</h5>
-              <p>Missisauga, ON, Canada</p>
-              <p>Western University</p>
+              <h5>Gedion Teshome</h5>
+              <p>Addis Ababa, ADD, Ethiopia</p>
+              <p>Addis Ababa Science and Tech University</p>
               <div className="d-flex w-50 justify-content-around">
-                <a href="https://github.com/irfanyusra">
+                <a href="https://github.com/GedionT">
                   {" "}
                   <i
                     className="fa fa-github"
                     style={{ fontSize: "36px", color: "#28054d" }}
                   />
                 </a>
-                <a href="https://www.linkedin.com/in/irfanyusra/">
+                <a href="https://www.linkedin.com/in/gedion-teshome-142431146/">
                   <i
                     className="fa fa-linkedin-square"
                     style={{ fontSize: "36px", color: "#28054d" }}
@@ -93,8 +93,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/judy.jpg"
                 alt="judy"
-                width="50px"
-                height="60px"
+                width="98px"
+                height="110px"
               />
               <h5>Judy Ham</h5>
               <p>Richmond Hill, ON, Canada</p>
@@ -120,8 +120,8 @@ function About() {
                 className="images mb-2 shadow rounded"
                 src="/assets/phil.jpg"
                 alt="phil"
-                width="50px"
-                height="60px"
+                width="98px"
+                height="110px"
               />
               <h5>Phillip Truong</h5>
               <p>Niagara Falls, ON, Canada</p>
@@ -145,23 +145,23 @@ function About() {
             <div className="d-flex flex-column align-items-center">
               <img
                 className="images mb-2 shadow rounded"
-                src="/assets/ged.jpg"
-                alt="ged"
-                width="50px"
-                height="60px"
+                src="/assets/yusra.jpg"
+                alt="yusra"
+                width="98px"
+                height="110px"
               />
-              <h5>Gedion Teshome</h5>
-              <p>Addis Ababa, ADD, Ethiopia</p>
-              <p>Addis Ababa Science and Tech University</p>
+              <h5>Yusra Irfan</h5>
+              <p>Missisauga, ON, Canada</p>
+              <p>Western University</p>
               <div className="d-flex w-50 justify-content-around">
-                <a href="https://github.com/GedionT">
+                <a href="https://github.com/irfanyusra">
                   {" "}
                   <i
                     className="fa fa-github"
                     style={{ fontSize: "36px", color: "#28054d" }}
                   />
                 </a>
-                <a href="https://www.linkedin.com/in/gedion-teshome-142431146/">
+                <a href="https://www.linkedin.com/in/irfanyusra/">
                   <i
                     className="fa fa-linkedin-square"
                     style={{ fontSize: "36px", color: "#28054d" }}

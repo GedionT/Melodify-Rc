@@ -43,7 +43,7 @@ function SearchPane({ dataPusher }) {
       <center>
         <div id="search" className="input-group">
           <input
-            className="shadow-sm form-control form-rounded"
+            className="shadow-lg form-control form-rounded"
             id="search"
             name="search"
             placeholder=" Enter URL to fetch content"

@@ -6,7 +6,7 @@ function Header() {
     textDecoration: "underline",
     border: "1px solid",
     padding: "10px",
-    boxShadow: "6px 12px #410D78"
+    boxShadow: "6px 10px #410D78"
   };
   // navbar-fixed-top navbar-dark bg-none
   return (
