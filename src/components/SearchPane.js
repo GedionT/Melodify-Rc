@@ -56,7 +56,7 @@ function SearchPane({ dataPusher }) {
             <button
               id="search-btn"
               className="btn btn-outline-dark"
-              type="button"
+              type="submit"
               onClick={() => {
                 submitHandle(query);
               }}

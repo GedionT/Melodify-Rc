@@ -17,7 +17,7 @@ function Board({ data }) {
 
   useEffect(() => {
     if (typeof data !== "string") {
-      let txt = data.map(tuple => tuple[0]).join(" ");
+      let txt = data.map((tuple) => tuple[0]).join(" ");
       setText(txt);
       setKeyboard(toKeyboardArray(data));
     }
@@ -28,16 +28,22 @@ function Board({ data }) {
       playKeyboard(keyboard, stat.pause, stat.index, stat.selectSound);
   }, [keyboard, stat]);
 
+  const onInstrumentChange = (event) => {
+    const newStat = { ...stat, selectSound: { value: event.target.value } };
+    setStat(newStat);
+  };
+
   return (
     <>
       <div className="selection-container">
         <center>
           <select
             className="shadow custome-select"
+            onChange={onInstrumentChange}
             name="instrument-select"
             id="btn-menu"
           >
-            <option defaultValue>Instrument Flavor</option>
+            <option value="0">Instrument Flavor</option>
             <option value="0">Piano</option>
             <option value="1">Organ</option>
             <option value="2">Acoustic</option>
@@ -72,7 +78,8 @@ function Board({ data }) {
           <Col span={12}>
             <Card title="Music Notes" bordered={true}>
               <p id="neon">
-                {keyboard.map(tuples => tuples[0]).join(" | ") || "waiting..."}
+                {keyboard.map((tuples) => tuples[0]).join(" | ") ||
+                  "waiting..."}
               </p>
             </Card>
           </Col>
