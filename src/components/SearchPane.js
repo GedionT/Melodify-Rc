@@ -9,7 +9,6 @@ function SearchPane({ dataPusher }) {
 
   // handles onChange in input bar using setQuery
   function onQueryChange(event) {
-    event.preventDefault();
     const newQuery = { ...query, url: event.target.value };
     setQuery(newQuery);
   }
@@ -44,7 +43,7 @@ function SearchPane({ dataPusher }) {
         </center>
       </h6>
       <center>
-        <form id="search" className="input-group">
+        <div id="search" className="input-group">
           <input
             className="shadow-lg form-control form-rounded"
             id="search"
@@ -64,7 +63,6 @@ function SearchPane({ dataPusher }) {
               id="search-btn"
               className="btn btn-outline-dark"
               type="submit"
-              value="Submit"
               onClick={() => {
                 submitHandle(query);
               }}
@@ -72,7 +70,7 @@ function SearchPane({ dataPusher }) {
               Search
             </button>
           </div>
-        </form>
+        </div>
       </center>
     </div>
   );
