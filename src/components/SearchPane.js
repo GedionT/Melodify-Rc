@@ -28,7 +28,7 @@ function SearchPane({ dataPusher }) {
         <center>Melodify</center>
       </h3>
       <h5>
-        <center>" Hear Your Sites "</center>
+        <center><em>" Hear Your Sites "</em></center>
       </h5>
 
       <br />
