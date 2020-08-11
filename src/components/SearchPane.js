@@ -9,6 +9,7 @@ function SearchPane({ dataPusher }) {
 
   // handles onChange in input bar using setQuery
   function onQueryChange(event) {
+    event.preventDefault();
     const newQuery = { ...query, url: event.target.value };
     setQuery(newQuery);
   }
@@ -28,7 +29,9 @@ function SearchPane({ dataPusher }) {
         <center>Melodify</center>
       </h3>
       <h5>
-        <center><em>" Hear Your Sites "</em></center>
+        <center>
+          <em>" Hear Your Sites "</em>
+        </center>
       </h5>
 
       <br />
@@ -41,7 +44,7 @@ function SearchPane({ dataPusher }) {
         </center>
       </h6>
       <center>
-        <div id="search" className="input-group">
+        <form id="search" className="input-group">
           <input
             className="shadow-lg form-control form-rounded"
             id="search"
@@ -49,14 +52,19 @@ function SearchPane({ dataPusher }) {
             placeholder=" Enter URL to fetch content"
             onChange={onQueryChange}
             type="text"
+            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+            title="USE FULL URL, example: https://www.scope.io"
             value={query.url}
+            required
+            autoFocus
           />
 
-          <div className="shadow-sm input-group-append">
+          <div className="shadow-lg input-group-append">
             <button
               id="search-btn"
               className="btn btn-outline-dark"
               type="submit"
+              value="Submit"
               onClick={() => {
                 submitHandle(query);
               }}
@@ -64,7 +72,7 @@ function SearchPane({ dataPusher }) {
               Search
             </button>
           </div>
-        </div>
+        </form>
       </center>
     </div>
   );
