@@ -4,8 +4,8 @@
   "description": "convert a website content into music",
   "icons": [],
   "start_url": "/",
-  "background_color": "#white",
+  "background_color": "#ffffff",
   "display": "fullscreen",
   "scope": "/",
-  "theme_color": "#white"
+  "theme_color": "#ffffff"
 }
